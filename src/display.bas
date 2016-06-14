@@ -43,6 +43,8 @@ end sub
 
 sub display_redraw()	
 	
+	view print 1 to con_height
+	
 	page_count = io_get_buffer_size(current_buffer) / bytes_per_page
 	dim para_ct as integer = io_get_buffer_paragraph_count(current_buffer)
 	
@@ -56,8 +58,8 @@ sub display_redraw()
 	
 	locate lrow, 1	
 	print "BUF "; trim(str(current_buffer)); "/"; trim(str(io_get_buffer_count())); " | "; 
-	print "BYTE "; trim(str(io_get_buffer_offset(current_buffer))); " "; trim(str(io_get_buffer_size(current_buffer))); " | PAGES "; trim(str(page_count));
-	print " | PARAGRAPHS "; trim(str(para_ct));
+	print "BYTE "; trim(hex(io_get_buffer_offset(current_buffer))); "/"; trim(hex(io_get_buffer_size(current_buffer))); " | PAGES "; trim(hex(page_count));
+	print " | PARAGRAPHS "; trim(hex(para_ct));
 
 	view print 2 to con_height - 1
 
